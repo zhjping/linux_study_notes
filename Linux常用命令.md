@@ -103,12 +103,57 @@
             -6    强行使用 IPV6 地址 
     ```
 
+- 修改文件权限命令：chmod
+    ```
+    chmod [-cfvR] [--help] [--version]  filename
+        -c          若该文件权限确实已经更改，才显示其更改动作
+        -f          忽略错误信息
+        -v          显示权限变更的详细资料
+        -R          对目前目录下的所有文件与子目录进行相同的权限变更
+        --help      显示辅助说明
+        --version   显示版本
+    
+    例：
+        chmod 755 test.sh
+        chmod +x test.sh
+    ```
+
+- 修改文件所有者命令：chown
+    ```
+    chown [-cfhvR] [--help] [--version] user[:group] filename
+        -c          若该文件所有者确实已经更改，才显示其更改动作
+        -f          忽略错误信息
+        -h          修复符号链接
+        -v          显示详细的处理信息
+        -R          对目前目录下的所有文件与子目录进行相同的所有者变更
+        --help      显示辅助说明
+        --version   显示版本
+    
+    例：
+        chown zhjping:zhjping test.sh
+        chown -R zhjping:zhjping projects
+    ```
+
 - 剪切或改名命令：mv  
     ```
     mv [原文件或目录] [目标目录]
         命令英文原意：move
     ```
+- history  
+    ```
+    history [选项] [历史命令保存文件]
+    选项：
+	    -c  清空历史命令
+	    -w  把缓存中的历史命令写入历史命令保存文件/root/.bash_history
 
+    历史命令默认保存1000条，可以在环境变量配置文件/etc/profile中进行修改
+
+    历史命令的调用
+        使用上下箭头调用以前的历史命令
+        使用"!n"重复执行第n条历史命令
+        使用"!!"重复执行上一条命令
+        使用"!字串"重复执行最后一条以该字串开头的命令
+    ```
 - 硬链接特征：
     ```
     1. 拥有相同的i节点和存储block块，可以看做是同一个文件
@@ -547,6 +592,119 @@
     && echo 0 > /proc/sys/vm/drop_caches
     ```
 
+### 8. CentOS7.5安装配置
+
+#### 8.1 配置网络
+- 修改主机IP地址  
+    ```
+    打开配置文件  
+        vi /etc/sysconfig/network-scripts/ifcfg-eth0
+    将  
+        BOOTPROTO=dhcp 改为 BOOTPROTO=static
+        ONBOOT=no 改为 ONBOOT=yes
+    添加  
+        IPADDR=192.168.18.138
+        NETMASK=255.255.255.0
+        GATEWAY=192.168.18.2
+        DNS1=114.114.114.114
+        DNS2=8.8.8.8
+    
+    重启网络服务  
+        systemctl restart network.service  
+    ```
+#### 8.2 安装软件工具
+- 安装开发工具  
+    ```
+    yum install -y lrzsz
+    yum install -y unzip
+    yum install -y gdb
+    yum install -y gcc
+    yum install -y gcc-c++
+    ```
+#### 8.3 配置防火墙
+- 查看防火墙服务状态  
+    `systemctl status firewalld.service`  
+    或 `firewall-cmd --state`
+
+- 打开防火墙  
+    `systemctl start firewalld.service`
+
+- 关闭防火墙  
+    `systemctl stop firewalld.service`
+
+- 重启防火墙  
+    `systemctl restart firewalld.service`  
+    或 `firewall-cmd --reload`
+
+- 设置防火墙开机自启动  
+    `systemctl enable firewalld.service`
+
+- 永久关闭防火墙  
+    先关闭防火墙服务  
+    `systemctl stop firewalld.service`  
+    `systemctl disable firewalld.service`
+
+- 查看防火墙规则  
+    `firewall-cmd --list-all`
+
+- 查看所有开放端口  
+    `firewall-cmd --list-ports`
+
+- 开启端口  
+    ```
+    firewall-cmd --zone=public --add-port=80/tcp --permanent
+
+    命令含义：
+        – zone              # 作用域
+        –add-port=80/tcp    # 添加端口，格式为：端口/通讯协议
+        –permanent          # 永久生效，没有此参数重启后失效
+    ```
+
+- 移除端口  
+    `firewall-cmd  --remove-port=80/tcp --permanent`
+
+- 允许某个IP访问（默认允许）  
+    `firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=10.0.0.19 accept'`  
+    `firewall-cmd --reload`
+
+- 禁止某个IP访问  
+    `firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=10.0.0.42 drop'`  
+    `firewall-cmd --reload`
+
+- 允许某个IP访问某个端口  
+    `firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=10.0.0.42 port protocol=tcp port=6379 accept'`  
+    `firewall-cmd --reload`
+
+- 禁止某个IP访问某个端口  
+    `firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=10.0.0.42 port protocol=tcp port=8080 reject'`  
+    `firewall-cmd --reload`
+
+- 移除以上规则  
+    `firewall-cmd --permanent --remove-rich-rule='rule family="ipv4" source address="10.0.0.42" port port="8080" protocol="tcp" reject'`  
+    单引号中的内容（要移除的规则）要与命令`firewall-cmd --list-all`显示的相同
+
+#### 8.4 设置SELinux
+- 查看SELinux状态  
+    ```
+    [root@localhost ~]# getenforce
+        Enforcing       表示启动
+        Permissive      表示关闭
+    ```
+
+- 临时关闭SELinux
+    ```
+    setenforce [ Enforcing | Permissive | 1 | 0 ] 
+        Enforcing       表示启动
+        Permissive      表示关闭
+        1               表示启动
+        0               表示关闭
+    ```
+
+- 永久关闭（修改配置文件，即可永久关闭）  
+    `[root@localhost ~]# vim /etc/selinux/config`
+    ```
+    SELINUX=disabled
+    ```
 ----------------------------------------------------------------------
 
 ## Linux磁盘管理
@@ -1042,23 +1200,5 @@
 
     `yum groupremove softwaregroup`  
     卸载指定软件组
-
-----------------------------------------------------------------------
-
-
-
-
-
-----------------------------------------------------------------------
-
-
-
-
-
-----------------------------------------------------------------------
-
-
-
-
 
 ----------------------------------------------------------------------
