@@ -1,44 +1,44 @@
-- CURDIR  
+- __CURDIR__  
     ```
     make的内嵌变量，自动设置为当前目录
     ```
 
-- MAKE  
+- __MAKE__  
     ```
     make的内嵌变量，值为：make
     ```
 
-- \$  
+- __\$__  
     ```
     表示变量或者函数的引用，要使用符号"$"的地方，需要书写两个连续的("$$")。
     ```
-- $@  
+- __$@__  
     ```
     目标文件
     ```
 
-- $^  
+- __$^__  
     ```
     所有的依赖文件
     ```
 
-- $?  
+- __$?__  
     ```
     表示依赖文件列表中被改变过的所有文件。
     ```
 
-- $<  
+- __$<__  
     ```
     第一个依赖文件。
     ```
 
-- $(@F)  
+- __$(@F)__  
     ```
     表示"$@"的文件部分，如果"$@"值是"dir/foo.o"，那么"$(@F)"就是"foo.o"，
     "$(@F)"相当于函数"$(notdir $@)"。
     ```
 
-- $*  
+- __$*__  
     ```
     在静态模式规则中的使用方法：
     bigoutput littleoutput : %output : text.g
@@ -46,28 +46,28 @@
     自动环变量"$*"被展开为"茎"。在这里就是"big"和"little"。
     ```
 
-- =  
+- __=__  
     ```
     变量赋值，值可以定义在文件的任何一处，也就是说，右侧中的变量
     不一定非要是已定义好的值，其也可以使用后面定义的值。
     ```
 
-- :=  
+- __:=__  
     ```
     变量赋值，只能使用前面已定义好了的变量，不能使用后面定义的变量。
     ```
 
-- ?=  
+- __?=__  
     ```
     变量赋值，如果变量没有定义过，则进行赋值操作，如果已经定义，
     则什么也不做。
     ```
-- +=  
+- __+=__  
     ```
     变量追加值，以空格分隔。
     ```
 
-- $(VAR:A=B)  
+- __$(VAR:A=B)__  
     ```
     替换变量"VAR"中所有"A"字符结尾的字为"B"结尾的字。
     例如：
@@ -76,17 +76,17 @@
     在这个定义中，变量"bar"的值就为"a.c b.c c.c"
     ```
 
-- \\  
+- __\\__  
     ```
     反斜线，用于将一个较长的行分解为多行，反斜线之后不能有空格。
     ```
 
-- 函数的调用语法  
+- __函数的调用语法__  
     ```
     $(FUNCTION ARGUMENTS)
     ```
 
-- subst  
+- __subst__  
     ```
     $(subst FROM, TO, TEXT)
         函数名称：  字符串替换函数—subst。
@@ -99,7 +99,7 @@
         结果得到字符串"fEEt on the strEEt"
     ```
 
-- patsubst  
+- __patsubst__  
     ```
     $(patsubst PATTERN,REPLACEMENT,TEXT)
         函数名称：  模式替换函数—patsubst。
@@ -123,7 +123,7 @@
         的字符。函数的返回结果是"x.c.o bar.o"
     ```
 
-- strip  
+- __strip__  
     ```
     $(strip STRINT)
         函数名称：  去空格函数—strip。
@@ -138,7 +138,7 @@
         结果是"a b c"
     ```
 
-- findstring  
+- __findstring__  
     ```
     $(findstring FIND,IN)
         函数名称：  查找字符串函数—findstring。
@@ -152,7 +152,7 @@
         第一个函数结果是字"a"；第二个值为空字符。
     ```
 
-- filter  
+- __filter__  
     ```
     $(filter PATTERN…,TEXT)
         函数名称：  过滤函数—filter。
@@ -171,7 +171,7 @@
         生成目标"foo"，函数返回值为"foo.c bar.c baz.s"。
     ```
 
-- filter-out  
+- __filter-out__  
     ```
     $(filter-out PATTERN...,TEXT)
         函数名称：  反过滤函数—filter-out。
@@ -190,7 +190,7 @@
         功能。它的返回值为"foo.o bar.o"。
     ```
 
-- sort  
+- __sort__  
     ```
     $(sort LIST)
         函数名称：  排序函数—sort。
@@ -205,7 +205,7 @@
         返回值为："bar foo lose"
     ```
 
-- word  
+- __word__  
     ```
     $(word N,TEXT)
         函数名称：  取单词函数—word。
@@ -219,7 +219,7 @@
         返回值为"bar"。
     ```
 
-- wordlist  
+- __wordlist__  
     ```
     $(wordlist S,E,TEXT)
         函数名称：  取字符串函数—wordlist。
@@ -235,7 +235,7 @@
         返回值为："bar baz"。
     ```
 
-- words  
+- __words__  
     ```
     $(words TEXT)
         函数名称：  统计单词数目函数—words。
@@ -248,7 +248,7 @@
         $(word $(words TEXT),TEXT)。
     ```
 
-- firstword  
+- __firstword__  
     ```
     $(firstword NAMES…)
         函数名称：  取首单词函数—firstword。
@@ -275,7 +275,7 @@
         那么第二条语句所实现的功能就是"CFLAGS += -Isrc –I../includes"。
     ```
 
-- basename  
+- __basename__  
     ```
     $(basename NAMES…)
         函数名称：  取前缀函数—basename。
@@ -292,7 +292,7 @@
         返回值为："src/foo src-1.0/bar /home/jack/.font hacks"。
     ```
 
-- dir  
+- __dir__  
     ```
     $(dir NAMES…)
         函数名称：  取目录函数—dir。
@@ -307,7 +307,7 @@
         返回值为"src/ ./"。
     ```
 
-- notdir  
+- __notdir__  
     ```
     $(notdir NAMES…)
         函数名称：  取文件名函数——notdir。
@@ -325,7 +325,7 @@
         返回值为："foo.c hacks"。
     ```
 
-- suffix  
+- __suffix__  
     ```
     $(suffix NAMES…)
         函数名称：  取后缀函数—suffix。
@@ -341,7 +341,7 @@
         返回值为".c .c"。
     ```
 
-- addsuffix  
+- __addsuffix__  
     ```
     $(addsuffix SUFFIX,NAMES…)
         函数名称：  加后缀函数—addsuffix。
@@ -356,7 +356,7 @@
         返回值为"foo.c bar.c"。
     ```
 
-- addprefix  
+- __addprefix__  
     ```
     $(addprefix PREFIX,NAMES…)
         函数名称：  加前缀函数—addprefix。
@@ -371,7 +371,7 @@
         返回值为"src/foo src/bar"。
     ```
 
-- join  
+- __join__  
     ```
     $(join LIST1,LIST2)
         函数名称：  单词连接函数——join。
@@ -392,7 +392,7 @@
         返回值为："a.c b.o c"。
     ```
 
-- wildcard  
+- __wildcard__  
     ```
     $(wildcard PATTERN)
         函数名称：  获取匹配模式文件名函数—wildcard
