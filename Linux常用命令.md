@@ -1,12 +1,8 @@
-# Linux命令  
-
-----------------------------------------------------------------------
-
 ## Linux常用命令
 
 ### 1. 基本命令格式
 
-- __[root@localhost~]#__  
+- __[root@localhost~]#__
 
     ```(text)
     其中：
@@ -30,23 +26,23 @@
 
 ### 2. 文件处理命令
 
-- __显示当前目录下的文件：ls__  
+- __显示当前目录下的文件：ls__
 
     ```(text)
-    ls [选项] [文件或目录]  
-    选项：  
-        -a  显示所有文件，包括隐藏文件  
-        -l  显示详细信息（ls -l=ll）  
-        -d  查看目录属性  
-        -h  人性化显示文件大小  
-        -i  显示inode  
+    ls [选项] [文件或目录]
+    选项：
+        -a  显示所有文件，包括隐藏文件
+        -l  显示详细信息（ls -l=ll）
+        -d  查看目录属性
+        -h  人性化显示文件大小
+        -i  显示inode
     ```
 
-- __创建目录：mkdir__  
+- __创建目录：mkdir__
 
     ```(text)
     mkdir -p [目录名]
-        -p  递归创建  
+        -p  递归创建
         命令英文原意：make directories
     ```
 
@@ -71,14 +67,14 @@
         命令英文原意：print working directory
     ```
 
-- __删除空目录：rmdir__  
+- __删除空目录：rmdir__
 
     ```(text)
     rmdir [目录名]
         命令英文原意：remove empty directories
     ```
 
-- __删除文件或目录：rm__  
+- __删除文件或目录：rm__
 
     ```(text)
     rm -rf [文件或目录]
@@ -88,7 +84,7 @@
         -f    强制
     ```
 
-- __复制命令：cp__  
+- __复制命令：cp__
 
     ```(text)
     cp [选项] [原文件或目录] [目标目录]
@@ -100,14 +96,14 @@
         -a    相当于-pdr
     ```
 
-- __远程复制命令：scp__  
+- __远程复制命令：scp__
 
     ```(text)
-    1. 从本地复制到远程  
+    1. 从本地复制到远程
         scp [选项] [本地文件或目录] [远程用户名@远程ip或域名:/目录]
         scp /root/opensource/nginx.tar.gz root@www.cumt.edu.cn:/root/opensource/
 
-    2. 从远程复制到本地  
+    2. 从远程复制到本地
         scp [选项] [远程用户名@远程ip或域名:/目录] [本地文件或目录]
         scp root@www.cumt.edu.cn:/root/opensource/ /root/opensource/nginx.tar.gz
             -v    和大多数linux命令中的-v意思一样，用来显示进度，
@@ -115,7 +111,7 @@
             -C    使能压缩选项
             -P    选择端口 . 注意 -p 已经被 rcp 使用
             -4    强行使用 IPV4 地址
-            -6    强行使用 IPV6 地址 
+            -6    强行使用 IPV6 地址
     ```
 
 - __修改文件权限命令：chmod__
@@ -128,7 +124,7 @@
         -R          对目前目录下的所有文件与子目录进行相同的权限变更
         --help      显示辅助说明
         --version   显示版本
-    
+
     例：
         chmod 755 test.sh
         chmod +x test.sh
@@ -145,20 +141,20 @@
         -R          对目前目录下的所有文件与子目录进行相同的所有者变更
         --help      显示辅助说明
         --version   显示版本
-    
+
     例：
         chown zhjping:zhjping test.sh
         chown -R zhjping:zhjping projects
     ```
 
-- __剪切或改名命令：mv__  
+- __剪切或改名命令：mv__
 
     ```(text)
     mv [原文件或目录] [目标目录]
         命令英文原意：move
     ```
 
-- __history__  
+- __history__
 
     ```(text)
     history [选项] [历史命令保存文件]
@@ -190,7 +186,7 @@
     1. 类似windows快捷方式
     2. 软链接拥有自己的i节点和block块，但是数据块中只保存原文件的文件名
        和i节点号，并没有实际的文件数据
-    3. lrwxrwxrwx    
+    3. lrwxrwxrwx
         l 软链接
         软链接的文件权限都为rwxrwxrwx
     4. 修改任意文件，另一个都改变
@@ -199,7 +195,7 @@
 
 ### 3. 文件搜索命令
 
-- __文件搜索命令：locate__  
+- __文件搜索命令：locate__
 
     ```(text)
     locate 文件名
@@ -212,7 +208,7 @@
           可以通过updatedb更新后搜索到新建的文件
     ```
 
-- __/etc/updatedb.conf配置文件__  
+- __/etc/updatedb.conf配置文件__
 
     ```(text)
     PRUNE_BIND_MOUNTS="yes"     #开启搜索限制
@@ -221,7 +217,7 @@
     PRUNEPATHS=                 #搜索时，不搜索的路径
     ```
 
-- __搜索命令的命令：whereis__  
+- __搜索命令的命令：whereis__
 
     ```(text)
     whereis 命令名
@@ -231,14 +227,14 @@
         -m  只查找帮助文件
     ```
 
-- __搜索命令的命令：which__  
+- __搜索命令的命令：which__
 
     ```(text)
     which 文件名
         搜索命令所在路径及文件名
     ```
 
-- __文件搜索命令：find__  
+- __文件搜索命令：find__
 
     ```(text)
     find [搜索范围] [搜索条件]
@@ -269,7 +265,7 @@
             -exec/-ok 命令 {} \;对搜索结果执行操作
     ```
 
-- __Linux中的通配符__  
+- __Linux中的通配符__
 
     ```(text)
     *   匹配任意内容
@@ -277,7 +273,7 @@
     []  匹配任意一个中括号内的字符
     ```
 
-- __搜索字符串命令：grep__  
+- __搜索字符串命令：grep__
 
     ```(text)
     grep [选项] 字符串 文件名
@@ -289,7 +285,7 @@
 
 ### 4. 帮助命令
 
-- __man命令概述__  
+- __man命令概述__
 
     ```(text)
     man 命令
@@ -347,7 +343,7 @@
         获取内部命令帮助
     ```
 
-- __详细命令帮助info__  
+- __详细命令帮助info__
 
     ```(text)
     info 命令
@@ -360,7 +356,7 @@
 
 ### 5. 压缩和解压缩命令
 
-- __.zip压缩格式__（与windows中的zip相同）  
+- __.zip压缩格式__（与windows中的zip相同）
 
     ```(text)
     zip 压缩文件名 源文件
@@ -371,14 +367,14 @@
         解压缩.zip文件
     ```
 
-- __.gz压缩格式__  
+- __.gz压缩格式__
 
     ```(text)
     gzip 源文件
-        压缩为.gz格式的压缩文件，源文件会消失
+        压缩为".gz"格式的压缩文件，源文件会消失
 
     gzip -c 源文件 > 压缩文件
-        压缩为.gz格式，源文件保留
+        压缩为".gz"格式，源文件保留
         例如：gzip -c cangls > cangls.gz
 
     gzip -r 目录
@@ -395,7 +391,7 @@
 
     ```(text)
     bzip2 源文件
-        压缩为.bz2格式，不保留源文件
+        压缩为".bz2"格式，不保留源文件
 
     bzip2 -k 源文件
         压缩后保留源文件
@@ -432,22 +428,22 @@
 - __.tar.gz压缩格式__
 
     ```(text)
-    其实.tar.gz格式是先打包为.tar格式，再压缩为.gz格式
+    其实".tar.gz"格式是先打包为".tar"格式，再压缩为".gz"格式
 
     tar -zcvf 压缩包名.tar.gz 源文件
     选项：
-        -z  压缩为.tar.gz
+        -z  压缩为".tar.gz"
 
     tar -zxvf 压缩包名.tar.gz
     选项：
-        -x  解压缩.tar.gz格式
+        -x  解压缩".tar.gz"格式
     ```
 
 - __.tar.xz压缩格式__
 
     ```(text)
-    其实.tar.xz格式是先打包为.tar格式，再压缩为.xz格式
-    压缩为.tar.xz格式
+    其实".tar.xz"格式是先打包为".tar"格式，再压缩为".xz"格式
+    压缩为".tar.xz"格式
         1. tar -cvf 打包文件名 源文件
         2. xz -zk 要压缩的文件
     选项：
@@ -466,7 +462,7 @@
 - __.tar.bz2压缩格式__
 
     ```(text)
-    其实.tar.bz2格式是先打包为.tar格式，再压缩为.bz2格式
+    其实".tar.bz2"格式是先打包为".tar"格式，再压缩为".bz2"格式
 
     tar -jcvf 压缩包名.tar.bz2 源文件
     选项：
@@ -479,7 +475,7 @@
 
 ### 6. 关机和重起命令
 
-- __shutdown命令__  
+- __shutdown命令__
 
     ```(text)
     [root@localhost ~]#shutdown [选项] 时间
@@ -489,7 +485,7 @@
         -r  重起
     ```
 
-- __其它关机命令__  
+- __其它关机命令__
 
     ```(text)
     [root@localhost ~]#halt
@@ -497,14 +493,14 @@
     [root@localhost ~]#init 0
     ```
 
-- __其它重起命令__  
+- __其它重起命令__
 
     ```(text)
     [root@localhost ~]#reboot
     [root@localhost ~]#init 6
     ```
 
-- __系统运行级别__  
+- __系统运行级别__
 
     ```(text)
     0   关机
@@ -520,14 +516,14 @@
         id:3:initdefault:
 
     查询系统运行级别
-    [root@localhost ~]#runlevel     
+    [root@localhost ~]#runlevel
     ```
 
 ### 7. 其它常用命令
 
 #### 7.1 挂载命令
 
-- __查询与自动挂载__  
+- __查询与自动挂载__
 
     ```(text)
     [root@localhost ~]#mount
@@ -536,7 +532,7 @@
         依据配置文件/etc/fstab的内容，自动挂载
     ```
 
-- __挂载命令格式__  
+- __挂载命令格式__
 
     ```(text)
     [root@localhost ~]#mount [-t 文件系统] [-o 特殊选项] 设备文件名 挂载点
@@ -546,25 +542,25 @@
         -o  特殊选项：可以指定挂载的额外选项
     ```
 
-- __挂载光盘__  
+- __挂载光盘__
 
     ```(text)
     建立挂载点
     [root@localhost ~]#mkdir /mnt/cdrom/
-    
+
     挂载光盘
     [root@localhost ~]#mount -t ios9660 /dev/cdrom /mnt/cdrom/
     [root@localhost ~]#mount /dev/sr0 /mnt/cdrom/
     ```
 
-- __卸载命令__  
+- __卸载命令__
 
     ```(text)
     [root@localhost ~]#umount 设备文件名或挂载点
     [root@localhost ~]#umount /mnt/cdrom/
     ```
 
-- __挂载U盘__  
+- __挂载U盘__
 
     ```(text)
     [root@localhost ~]#fdisk -l
@@ -611,38 +607,38 @@
         -最后一次登陆时间
     ```
 
-- __Linux防火墙iptables相关操作__  
+- __Linux防火墙iptables相关操作__
 
     ```(text)
     开启防火墙
     service iptables start
-        
+
     关闭防火墙
     service iptables stop
-        
+
     重启防火墙
     service iptables restart
-        
+
     开放或关闭端口操作
     vi /etc/sysconfig/iptables
     文件内有修改模板，依样画葫芦即可
     ```
 
-- __linux内核版本和发行版本查看__(CentOS系列)  
+- __linux内核版本和发行版本查看__(CentOS系列)
 
     ```(text)
     查看内核版本
     uname -a
-        
+
     查看发行版本
     cat /etc/redhat-release
-        
+
     ldd 可执行文件
     列出可执行文件的动态依赖集
-        
+
     nm 函数库(.a文件或.so文件)
         列出函数库的符号列表
-        
+
     size 可执行文件
         列出可执行文件各个段的大小(text,data,bbs...)
 
@@ -650,13 +646,13 @@
         Linux同步网络时间
     ```
 
-- __查看端口占用__  
+- __查看端口占用__
 
     ```(text)
     yum install net-tools
     netstat -lnp
-            
-    sync && echo 3 > /proc/sys/vm/drop_caches 
+
+    sync && echo 3 > /proc/sys/vm/drop_caches
     && echo 0 > /proc/sys/vm/drop_caches
     ```
 
@@ -664,28 +660,28 @@
 
 #### 8.1 配置网络
 
-- __修改主机IP地址__  
+- __修改主机IP地址__
 
     ```(text)
-    打开配置文件  
+    打开配置文件
         vi /etc/sysconfig/network-scripts/ifcfg-eth0
-    将  
+    将
         BOOTPROTO=dhcp 改为 BOOTPROTO=static
         ONBOOT=no 改为 ONBOOT=yes
-    添加  
+    添加
         IPADDR=192.168.18.138
         NETMASK=255.255.255.0
         GATEWAY=192.168.18.2
         DNS1=114.114.114.114
         DNS2=8.8.8.8
-    
-    重启网络服务  
-        systemctl restart network.service  
+
+    重启网络服务
+        systemctl restart network.service
     ```
 
 #### 8.2 安装软件工具
 
-- __安装开发工具__  
+- __安装开发工具__
 
     ```(text)
     yum install -y lrzsz
@@ -697,35 +693,61 @@
 
 #### 8.3 配置防火墙
 
-- __查看防火墙服务状态__  
-    `systemctl status firewalld.service`  
-    或 `firewall-cmd --state`
+- __查看防火墙服务状态__
 
-- __打开防火墙__  
-    `systemctl start firewalld.service`
+    ```(text)
+    systemctl status firewalld.service  或
+    firewall-cmd --state
+    ```
 
-- __关闭防火墙__  
-    `systemctl stop firewalld.service`
+- __打开防火墙__
 
-- __重启防火墙__  
-    `systemctl restart firewalld.service`  
-    或 `firewall-cmd --reload`
+    ```(text)
+    systemctl start firewalld.service
+    ```
 
-- __设置防火墙开机自启动__  
-    `systemctl enable firewalld.service`
+- __关闭防火墙__
 
-- __永久关闭防火墙__  
-    先关闭防火墙服务  
-    `systemctl stop firewalld.service`  
-    `systemctl disable firewalld.service`
+    ```(text)
+    systemctl stop firewalld.service
+    ```
 
-- __查看防火墙规则__  
-    `firewall-cmd --list-all`
+- __重启防火墙__
 
-- __查看所有开放端口__  
-    `firewall-cmd --list-ports`
+    ```(text)
+    systemctl restart firewalld.service  或
+    firewall-cmd --reload
+    ```
 
-- __开启端口__  
+- __设置防火墙开机自启动__
+
+    ```(text)
+    systemctl enable firewalld.service
+    ```
+
+- __永久关闭防火墙__
+
+    ```(text)
+    先关闭防火墙服务
+    systemctl stop firewalld.service
+
+    再禁用防火墙服务（关闭开机自启）
+    systemctl disable firewalld.service
+    ```
+
+- __查看防火墙规则__
+
+    ```(text)
+    firewall-cmd --list-all
+    ```
+
+- __查看所有开放端口__
+
+    ```(text)
+    firewall-cmd --list-ports
+    ```
+
+- __开启端口__
 
     ```(text)
     firewall-cmd --zone=public --add-port=80/tcp --permanent
@@ -736,32 +758,55 @@
         –permanent          # 永久生效，没有此参数重启后失效
     ```
 
-- __移除端口__  
-    `firewall-cmd  --remove-port=80/tcp --permanent`
+- __移除端口__
 
-- __允许某个IP访问__（默认允许）  
-    `firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=10.0.0.19 accept'`  
-    `firewall-cmd --reload`
+    ```(text)
+    firewall-cmd  --remove-port=80/tcp --permanent
+    ```
 
-- __禁止某个IP访问__  
-    `firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=10.0.0.42 drop'`  
-    `firewall-cmd --reload`
+- __允许某个IP访问__（默认允许）
 
-- __允许某个IP访问某个端口__  
-    `firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=10.0.0.42 port protocol=tcp port=6379 accept'`  
-    `firewall-cmd --reload`
+    ```(text)
+    firewall-cmd --permanent --add-rich-rule=
+        'rule family=ipv4 source address=10.0.0.19 accept'
+    firewall-cmd --reload
+    ```
 
-- __禁止某个IP访问某个端口__  
-    `firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=10.0.0.42 port protocol=tcp port=8080 reject'`  
-    `firewall-cmd --reload`
+- __禁止某个IP访问__
 
-- __移除以上规则__  
-    `firewall-cmd --permanent --remove-rich-rule='rule family="ipv4" source address="10.0.0.42" port port="8080" protocol="tcp" reject'`  
+    ```(text)
+    firewall-cmd --permanent --add-rich-rule=
+        'rule family=ipv4 source address=10.0.0.42 drop'
+    firewall-cmd --reload
+    ```
+
+- __允许某个IP访问某个端口__
+
+    ```(text)
+    firewall-cmd --permanent --add-rich-rule=
+        'rule family=ipv4 source address=10.0.0.42 port protocol=tcp port=6379 accept'
+    firewall-cmd --reload
+    ```
+
+- __禁止某个IP访问某个端口__
+
+    ```(text)
+    firewall-cmd --permanent --add-rich-rule=
+        'rule family=ipv4 source address=10.0.0.42 port protocol=tcp port=8080 reject'
+    firewall-cmd --reload
+    ```
+
+- __移除以上规则__
+
+    ```(text)
+    firewall-cmd --permanent --remove-rich-rule=
+        'rule family="ipv4" source address="10.0.0.42" port port="8080" protocol="tcp" reject'
     单引号中的内容（要移除的规则）要与命令`firewall-cmd --list-all`显示的相同
+    ```
 
 #### 8.4 设置SELinux
 
-- __查看SELinux状态__  
+- __查看SELinux状态__
 
     ```(text)
     [root@localhost ~]# getenforce
@@ -772,14 +817,14 @@
 - __临时关闭SELinux__
 
     ```(text)
-    setenforce [ Enforcing | Permissive | 1 | 0 ] 
+    setenforce [ Enforcing | Permissive | 1 | 0 ]
         Enforcing       表示启动
         Permissive      表示关闭
         1               表示启动
         0               表示关闭
     ```
 
-- __永久关闭__（修改配置文件，即可永久关闭）  
+- __永久关闭__（修改配置文件，即可永久关闭）
 
     ```(text)
     [root@localhost ~]# vim /etc/selinux/config
@@ -791,7 +836,7 @@
 - __安装samba__
 
     ```(text)
-    yum install -y samba  
+    yum install -y samba
     ```
 
 - __设置防火墙__
@@ -872,7 +917,7 @@
 
         security选项配置为user
 
-    [homes] 
+    [homes]
         comment = Home Directories
         valid users = %S, %D%w%S
         browseable = No
@@ -897,14 +942,14 @@
         force group = @printadmin
         create mask = 0664
         directory mask = 0775
-    
+
     ----
 
     以上为samba的默认配置，修改security = user, passdb backend = smbpasswd，
     使用smbpasswd -a username命令添加用户并设置samba服务密码后就
     可以通过username和samba密码在Windows文件管理器地址栏中输入
     \\192.168.18.138\username进行访问。
-    
+
     如果需要添加额外的共享，可在配置文件添加以下配置
     [myshare]
         comment = share for users
@@ -922,7 +967,7 @@
 
 ### 1. 磁盘管理
 
-- __df 查看磁盘分区使用情况__  
+- __df 查看磁盘分区使用情况__
 
     ```(text)
     选项：
@@ -976,7 +1021,7 @@
 
     select /dev/sdb
         切换工作目录，或者启动parted分区工具时直接指定：parted /dev/sdb
-    
+
     mklabel msdos  or  mklabel gpt
         指定分区表类型
 
@@ -985,7 +1030,7 @@
 
     print all
         看所有硬盘的分区详情
-    
+
     rm 分区编号
         删除指定的分区
 
@@ -1040,10 +1085,10 @@
 - __用户和用户组相关信息__
 
     ```(text)
-    用户：使用操作系统的人  
-    用户组：具有相同系统权限的一组用户  
+    用户：使用操作系统的人
+    用户组：具有相同系统权限的一组用户
 
-    /etc/group  存储当前系统中所有用户组信息  
+    /etc/group  存储当前系统中所有用户组信息
         Group : X : 123 : root,ping
         组名称 : 组密码占位符 : 组编号 : 组中用户名列表
         例如：
@@ -1069,100 +1114,181 @@
         用户名 : 密码占位符 :::::
     ```
 
-- __添加用户组__  
-    `groupadd groupname`  
-    `group -g groupnumber groupname`
+- __添加用户组__
 
-- __修改用户组名__  
-    `groupmod -n newname oldname`
+    ```(text)
+    groupadd groupname
+    group -g groupnumber groupname
+    ```
 
-- __修改用户组号__  
-    `groupmod -g groupnumber groupname`
+- __修改用户组名__
 
-- __删除用户组__（先删除用户，再删除组）  
-    `groupdel 用户组名`
+    ```(text)
+    groupmod -n newname oldname
+    ```
 
-- __添加用户命令__  
-    `useradd -g groupname username`  
-    -g 指定用户组  
+- __修改用户组号__
 
-    `useradd -d /home/xxx username`  
-    没有指定用户组，默认创建与用户名相同的用户组  
-    -d 指定用户个人文件夹
+    ```(text)
+    groupmod -g groupnumber groupname
+    ```
 
-- __指定用户密码__  
-   `passwd username`
+- __删除用户组__（先删除用户，再删除组）
 
-- __修改用户备注信息__  
-    `usermod -c 备注信息 username`
+    ```(text)
+    groupdel 用户组名
+    ```
 
-- __修改用户名__  
-    `usermod -l newusername oldusername`
+- __添加用户命令__
 
-- __修改用户的个人文件路径__  
-    `usermod -d /home/文件名 username`
+    ```(text)
+    useradd -g groupname username
+        -g 指定用户组
 
-- __修改用户所属的用户组__  
-    `usermod -g newgroupname username`
+    useradd -d /home/xxx username
+    没有指定用户组，默认创建与用户名相同的用户组
+        -d 指定用户个人文件夹
+    ```
 
-- __修改用户密码__（root权限）  
-    `passwd username`
+- __指定用户密码__
 
-- __删除用户__  
-    `userdel username`  
+    ```(text)
+    passwd username
+    ```
+
+- __修改用户备注信息__
+
+    ```(text)
+    usermod -c 备注信息 username
+    ```
+
+- __修改用户名__
+
+    ```(text)
+    usermod -l newusername oldusername
+    ```
+
+- __修改用户的个人文件路径__
+
+    ```(text)
+    usermod -d /home/文件名 username
+    ```
+
+- __修改用户所属的用户组__
+
+    ```(text)
+    usermod -g newgroupname username
+    ```
+
+- __修改用户密码__（root权限）
+
+    ```(text)
+    passwd username
+    ```
+
+- __删除用户__
+
+    ```(text)
+    userdel username
     没有删除用户的个人文件夹
 
-    `userdel -r username`  
+    userdel -r username
     删除用户的同时删除个人文件夹
+    ```
 
-- __禁止普通用户登陆（即只允许root用户登陆）__  
-    `touch /etc/nologin`
+- __禁止普通用户登陆（即只允许root用户登陆）__
 
-- __锁定用户的账户__  
-    `passwd -l username`
+    ```(text)
+    touch /etc/nologin
+    ```
 
-- __解锁用户账户__  
-    `passwd -u username`
+- __锁定用户的账户__
 
-- __清除用户密码__  
-    `passwd -d username`
+    ```(text)
+    passwd -l username
+    ```
+
+- __解锁用户账户__
+
+    ```(text)
+    passwd -u username
+    ```
+
+- __清除用户密码__
+
+    ```(text)
+    passwd -d username
+    ```
 
 ### 2. 主要组与附属组
 
 用户可以同时属于多个组：一个主要组，多个附属组
 
-- __为用户添加附属组__  
-    `gpasswd -a 用户名 附属组名1, 附属组名2...`
+- __为用户添加附属组__
 
-- __切换用户组__  
-    `newgrp groupname`（如有组密码，回车后需要输入组密码）
+    ```(text)
+    gpasswd -a 用户名 附属组名1, 附属组名2...
+    ```
 
-- __删除用户的附属组__  
-    `gpasswd -d username 附属组名1, 附属组名2...`
+- __切换用户组__
 
-- __创建用户的同时指定主要组和附属组__  
-    `useradd -g 主要组名 -G 附属组名1, 附属组名2...`
+    ```(text)
+    newgrp groupname（如有组密码，回车后需要输入组密码）
+    ```
 
-- __修改用户组密码__  
-    `gpasswd groupname`
+- __删除用户的附属组__
 
-- __切换用户__  
-    `su username`
+    ```(text)
+    gpasswd -d username 附属组名1, 附属组名2...
+    ```
 
-- __显示当前登陆的用户名__  
-    `whoami`
+- __创建用户的同时指定主要组和附属组__
 
-- __显示指定用户信息__  
-    `id username`
+    ```(text)
+    useradd -g 主要组名 -G 附属组名1, 附属组名2...
+    ```
 
-- __显示username用户所在组__  
-    `groups username`
+- __修改用户组密码__
 
-- __设置用户详细资料，依次输入用户资料__  
-    `chfn username`
+    ```(text)
+    gpasswd groupname
+    ```
 
-- __显示用户详细资料__  
-    `finger username`
+- __切换用户__
+
+    ```(text)
+    su username
+    ```
+
+- __显示当前登陆的用户名__
+
+    ```(text)
+    whoami
+    ```
+
+- __显示指定用户信息__
+
+    ```(text)
+    id username
+    ```
+
+- __显示username用户所在组__
+
+    ```(text)
+    groups username
+    ```
+
+- __设置用户详细资料，依次输入用户资料__
+
+    ```(text)
+    chfn username
+    ```
+
+- __显示用户详细资料__
+
+    ```(text)
+    finger username
+    ```
 
 ----------------------------------------------------------------------
 
@@ -1170,14 +1296,14 @@
 
 ### 1. 软件包管理简介
 
-- __软件包分类__  
+- __软件包分类__
 
     ```(text)
     源码包（脚本安装包）
     二进制包（RPM包，系统默认包）
     ```
 
-- __源码包__  
+- __源码包__
 
     ```(text)
     优点：
@@ -1192,7 +1318,7 @@
         因为是编译安装，安装过程中一旦出错，新手很难解决
     ```
 
-- __RPM包__  
+- __RPM包__
 
     ```(text)
     优点：
@@ -1205,7 +1331,7 @@
         依赖性
     ```
 
-- __脚本安装包__  
+- __脚本安装包__
 
     ```(text)
     所谓的脚本安装包，就是把复杂的软件包安装过程写成了程序脚本，
@@ -1219,7 +1345,7 @@
 
 ### 2. rpm命令管理
 
-- __RPM包命名规则__  
+- __RPM包命名规则__
 
     ```(text)
     RPM包在系统光盘中
@@ -1309,7 +1435,7 @@
             -p          查询未安装包信息（package）
     ```
 
-- __RPM包校验__  
+- __RPM包校验__
 
     ```(text)
     RPM包校验
@@ -1337,23 +1463,23 @@
         rpm2cpio 包全名 | cpio -idv .文件绝对路径
             -rpm2cpio   将rpm包转换为cpio格式命令
             -cpio       是一个标准工具，它用于创建软件档案文件和从档案文件中提取文件
-    
+
     [root@localhost ~]#cpio 选项 < [文件|设备]
         选项：
             -i          copy-in模式，还原
             -d          还原时自动新建目录
-            -v          显示还原过程  
+            -v          显示还原过程
     ```
 
-### 3. yum在线管理  
+### 3. yum在线管理
 
 #### 3.1 yum 源文件
 
-- __CentOS-Base.repo文件说明__  
+- __CentOS-Base.repo文件说明__
 
     ```(text)
-    vi /etc/yum.repos.d/CentOS-Base.repo  
-    
+    vi /etc/yum.repos.d/CentOS-Base.repo
+
     [base]      容器名称，一定要放在[]中
     name        容器说明，可以自己随便写
     mirrorlist  镜像站点，这个可以注释掉
@@ -1369,13 +1495,13 @@
 
 ##### 3.2.1 挂载光盘
 
-- __建立挂载点__  
+- __建立挂载点__
 
     ```(text)
     mkdir /mnt/cdrom
     ```
 
-- __挂载光盘__  
+- __挂载光盘__
 
     ```(text)
     mount /dev/cdrom /mnt/cdrom/
@@ -1383,23 +1509,23 @@
 
 ##### 3.2.2 使网络yum源失效
 
-- __进入yum源目录__  
+- __进入yum源目录__
 
     ```(text)
     cd /etc/yum.repos.d/
     ```
 
-- __修改yum源文件，使其失效__  
+- __修改yum源文件，使其失效__
 
     ```(text)
-    mv CentOS-Base.repo CentOS-Base.repo.bak  
+    mv CentOS-Base.repo CentOS-Base.repo.bak
     vim CentOS-Media.repo
-    
-    [c6-media]  
-    name=CentOS-$releasever -Media  
-    baseurl=file:///mnt/cdrom    #地址为你的光盘挂载地址  
-    # file:///media/cdrom  
-    # file:///media/cdrecorder/  #注释这两个不存在的地址  
+
+    [c6-media]
+    name=CentOS-$releasever -Media
+    baseurl=file:///mnt/cdrom    #地址为你的光盘挂载地址
+    # file:///media/cdrom
+    # file:///media/cdrecorder/  #注释这两个不存在的地址
     gpgcheck=1
     enabled=1   #把enabled=0改为enabled=1,使yum源配置文件生效
     gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
@@ -1407,61 +1533,61 @@
 
 ##### 3.2.3 yum命令
 
-- __搜索__  
+- __搜索__
 
     ```(text)
-    yum list  
-    查看yum源中有哪些软件包可以安装  
+    yum list
+    查看yum源中有哪些软件包可以安装
 
-    yum search keyword  
-    搜索服务器上所有和关键字相关的包  
+    yum search keyword
+    搜索服务器上所有和关键字相关的包
     ```
 
-- __安装__  
+- __安装__
 
     ```(text)
     yum -y install packagename
-    选项：  
-        install 安装  
-        -y      自动回答yes  
+    选项：
+        install 安装
+        -y      自动回答yes
 
-    例如：yum -y install gcc  
+    例如：yum -y install gcc
     ```
 
-- __更新__  
+- __更新__
 
     ```(text)
-    yum -y update packagename  
-    选项：  
-        update  升级  
-        -y      自动回答yes  
+    yum -y update packagename
+    选项：
+        update  升级
+        -y      自动回答yes
     ```
 
-- __卸载__  
+- __卸载__
 
     ```(text)
     yum -y remove packagename
-    选项：  
-        remove  卸载  
-        -y      自动回答yes  
+    选项：
+        remove  卸载
+        -y      自动回答yes
     ```
 
 ##### 3.2.4 软件组管理命令
 
-- __列出所有可用的软件组列表__  
+- __列出所有可用的软件组列表__
 
     ```(text)
     yum grouplist
-    ```  
+    ```
 
-- __安装指定软件组，组名可以由grouplist查询出来__  
+- __安装指定软件组，组名可以由grouplist查询出来__
 
     ```(text)
     yum groupinstall softwaregroup
-    ```  
+    ```
 
-- __卸载指定软件组__  
+- __卸载指定软件组__
 
     ```(text)
     yum groupremove softwaregroup
-    ```  
+    ```

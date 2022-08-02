@@ -1,55 +1,55 @@
-# Makefile语法笔记
+## Makefile语法笔记
 
-- __CURDIR__  
+- __CURDIR__
 
     ```(text)
     make的内嵌变量，自动设置为当前目录
     ```
 
-- __MAKE__  
+- __MAKE__
 
     ```(text)
     make的内嵌变量，值为：make
     ```
 
-- __\$__  
+- __\$__
 
     ```(text)
     表示变量或者函数的引用，要使用符号"$"的地方，需要书写两个连续的("$$")。
     ```
 
-- __$@__  
+- __$@__
 
     ```(text)
     目标文件
     ```
 
-- __$^__  
+- __$^__
 
     ```(text)
     所有的依赖文件
     ```
 
-- __$?__  
+- __$?__
 
     ```(text)
     表示依赖文件列表中被改变过的所有文件。
     ```
 
-- __$<__  
+- __$<__
 
     ```(text)
     第一个依赖文件。
     ```
 
-- __$(@F)__  
+- __$(@F)__
 
     ```(text)
     表示"$@"的文件部分，如果"$@"值是"dir/foo.o"，那么"$(@F)"就是"foo.o"，
     "$(@F)"相当于函数"$(notdir $@)"。
     ```
 
-- __$*__  
+- __$*__
 
     ```(text)
     在静态模式规则中的使用方法：
@@ -58,33 +58,33 @@
     自动环变量"$*"被展开为"茎"。在这里就是"big"和"little"。
     ```
 
-- __=__  
+- __=__
 
     ```(text)
     变量赋值，值可以定义在文件的任何一处，也就是说，右侧中的变量
     不一定非要是已定义好的值，其也可以使用后面定义的值。
     ```
 
-- __:=__  
+- __:=__
 
     ```(text)
     变量赋值，只能使用前面已定义好了的变量，不能使用后面定义的变量。
     ```
 
-- __?=__  
+- __?=__
 
     ```(text)
     变量赋值，如果变量没有定义过，则进行赋值操作，如果已经定义，
     则什么也不做。
     ```
 
-- __+=__  
+- __+=__
 
     ```(text)
     变量追加值，以空格分隔。
     ```
 
-- __$(VAR:A=B)__  
+- __$(VAR:A=B)__
 
     ```(text)
     替换变量"VAR"中所有"A"字符结尾的字为"B"结尾的字。
@@ -94,19 +94,19 @@
     在这个定义中，变量"bar"的值就为"a.c b.c c.c"
     ```
 
-- __\\__  
+- __\\__
 
     ```(text)
     反斜线，用于将一个较长的行分解为多行，反斜线之后不能有空格。
     ```
 
-- __函数的调用语法__  
+- __函数的调用语法__
 
     ```(text)
     $(FUNCTION ARGUMENTS)
     ```
 
-- __subst__  
+- __subst__
 
     ```(text)
     $(subst FROM, TO, TEXT)
@@ -120,7 +120,7 @@
         结果得到字符串"fEEt on the strEEt"
     ```
 
-- __patsubst__  
+- __patsubst__
 
     ```(text)
     $(patsubst PATTERN,REPLACEMENT,TEXT)
@@ -145,7 +145,7 @@
         的字符。函数的返回结果是"x.c.o bar.o"
     ```
 
-- __strip__  
+- __strip__
 
     ```(text)
     $(strip STRINT)
@@ -161,7 +161,7 @@
         结果是"a b c"
     ```
 
-- __findstring__  
+- __findstring__
 
     ```(text)
     $(findstring FIND,IN)
@@ -176,7 +176,7 @@
         第一个函数结果是字"a"；第二个值为空字符。
     ```
 
-- __filter__  
+- __filter__
 
     ```(text)
     $(filter PATTERN…,TEXT)
@@ -196,7 +196,7 @@
         生成目标"foo"，函数返回值为"foo.c bar.c baz.s"。
     ```
 
-- __filter-out__  
+- __filter-out__
 
     ```(text)
     $(filter-out PATTERN...,TEXT)
@@ -216,7 +216,7 @@
         功能。它的返回值为"foo.o bar.o"。
     ```
 
-- __sort__  
+- __sort__
 
     ```(text)
     $(sort LIST)
@@ -232,7 +232,7 @@
         返回值为："bar foo lose"
     ```
 
-- __word__  
+- __word__
 
     ```(text)
     $(word N,TEXT)
@@ -247,7 +247,7 @@
         返回值为"bar"。
     ```
 
-- __wordlist__  
+- __wordlist__
 
     ```(text)
     $(wordlist S,E,TEXT)
@@ -264,7 +264,7 @@
         返回值为："bar baz"。
     ```
 
-- __words__  
+- __words__
 
     ```(text)
     $(words TEXT)
@@ -278,7 +278,7 @@
         $(word $(words TEXT),TEXT)。
     ```
 
-- __firstword__  
+- __firstword__
 
     ```(text)
     $(firstword NAMES…)
@@ -306,7 +306,7 @@
         那么第二条语句所实现的功能就是"CFLAGS += -Isrc –I../includes"。
     ```
 
-- __basename__  
+- __basename__
 
     ```(text)
     $(basename NAMES…)
@@ -324,7 +324,7 @@
         返回值为："src/foo src-1.0/bar /home/jack/.font hacks"。
     ```
 
-- __dir__  
+- __dir__
 
     ```(text)
     $(dir NAMES…)
@@ -340,7 +340,7 @@
         返回值为"src/ ./"。
     ```
 
-- __notdir__  
+- __notdir__
 
     ```(text)
     $(notdir NAMES…)
@@ -359,7 +359,7 @@
         返回值为："foo.c hacks"。
     ```
 
-- __suffix__  
+- __suffix__
 
     ```(text)
     $(suffix NAMES…)
@@ -376,7 +376,7 @@
         返回值为".c .c"。
     ```
 
-- __addsuffix__  
+- __addsuffix__
 
     ```(text)
     $(addsuffix SUFFIX,NAMES…)
@@ -392,7 +392,7 @@
         返回值为"foo.c bar.c"。
     ```
 
-- __addprefix__  
+- __addprefix__
 
     ```(text)
     $(addprefix PREFIX,NAMES…)
@@ -408,7 +408,7 @@
         返回值为"src/foo src/bar"。
     ```
 
-- __join__  
+- __join__
 
     ```(text)
     $(join LIST1,LIST2)
@@ -430,7 +430,7 @@
         返回值为："a.c b.o c"。
     ```
 
-- __wildcard__  
+- __wildcard__
 
     ```(text)
     $(wildcard PATTERN)
@@ -439,7 +439,7 @@
         返回值：    空格分割的、存在当前目录下的所有符合模式"PATTERN"的文件名。
         函数说明：  "PATTERN"使用shell可识别的通配符，包括"?"(单字符)、
                     "*"(多字符)等。可参考4.4 文件名中使用通配符一节。
-                    
+
     示例：
         $(wildcard *.c)
         返回值为当前目录下所有.c源文件列表。
